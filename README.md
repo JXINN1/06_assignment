@@ -35,6 +35,8 @@ First I generated different messages I wanted to send out to people and stored t
   ]
   
 ```
+My Tokens are stored in .env files so its protected and is not published on Github. 
+
 Then I scheduled to push the message every 5th minute so it is easier to check.
 
 ```javascript
