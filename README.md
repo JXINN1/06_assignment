@@ -1,5 +1,8 @@
+## Introduction
 This is an app based on Node js for wellness reminders.
+It is desgined to send to their phone messages every 5th minute by sending them and remind the well-being.
 First I generated different messages I wanted to send out to people and stored them in the messages.json file so it is easier to retrieve.
+
 ```javascript
 [
     {
@@ -39,6 +42,13 @@ My Tokens are stored in .env files so its protected and is not published on Gith
 
 Then I scheduled to push the message every 5th minute so it is easier to check.
 
+## Scedule using cron
+
+```javascript
+cron.schedule('*/5 * * * *', sendWellnessMessage)
+```
+Every time ``sendWellnessMessage`` is called, it generates a random number, picking a random message from the messages.json dump.
+
 ```javascript
 function sendWellnessMessage() {
   var randomIndex = Math.floor(Math.random() * messages.length);
@@ -48,26 +58,30 @@ function sendWellnessMessage() {
   push.send("Wellness Reminder", message, handlePushoverResponse);
 }
 ```
+## problems
+At first try, I couldn't detect if the message was being sent or not. The "Wellness notifier started. Waiting for scheduled messages.." console log let me to detect if the app runs the way you desire.  
 
-Every time ``sendWellnessMessage`` is called, it generates a random number, picking a random message from the messages.json dump.
+<img width="572" alt="first issue" src="https://github.com/JXINN1/06_assignment/assets/146362069/127b863a-cd0e-4239-920a-ae9e0f010dd2">
 
-At first try, I couldn't detect if the message was being sent or not.
-<img width="572" alt="first issue" src="https://github.com/JXINN1/06_assignment/assets/146362069/c6d9dceb-6e29-4c24-8b38-51cca3dfa7fb">
+Also I added the log message whenever a message is being pushed. 
+As you can see, ``pm2 log`` shows all the messages that are pushed.
+<img width="1009" alt="third issue" src="https://github.com/JXINN1/06_assignment/assets/146362069/0f812ddc-23a6-4607-b594-0fc660e024a5">
 
-So I added the log message whenever a message is being pushed.
-<img width="564" alt="second issue" src="https://github.com/JXINN1/06_assignment/assets/146362069/8fc987e1-e92d-4af1-8840-c04f625d117b">
+![pm2_start](https://github.com/JXINN1/06_assignment/assets/146362069/eb794840-5cea-4534-97c6-08d64838ebfe)
+
+Digital Ocean droplet and pm2 let me to run the project continuously, and I constantly checked with the monitor.
+
+![pm2_stop](https://github.com/JXINN1/06_assignment/assets/146362069/cdedaede-dcdc-4f62-9870-fb032ebcd2a0)
+
 
 Also, I added the function regardless of the cron scheduled message at the beginning of the message reminding there will be messages generated every 5th minute.
+It is for introducing the purpose of the app as well as checking and reminding the schedule.
 
 ```javascript
 push.send("Wellness Reminder", "Hi this is your Wellness Reminder. I will be sending you wellness reminders every 5th min!", handlePushoverResponse);
 ```
 
-<img width="1009" alt="third issue" src="https://github.com/JXINN1/06_assignment/assets/146362069/7c5d0991-5fb8-4636-b4b2-928427b7f54c">
-
-As you can see, ``pm2 log`` shows all the messages that are pushed.
-<img width="1208" alt="pm2 run2" src="https://github.com/JXINN1/06_assignment/assets/146362069/b2a3a590-9a41-4537-9212-e47d8ab35ab0">
-
 Finally, this is the messages that are sent to my phone:
 
-![Image (1)-1](https://github.com/JXINN1/06_assignment/assets/146362069/18a28f9a-34d9-4025-bbae-c8aa5d9e1bc5)
+![Image (1)-1](https://github.com/JXINN1/06_assignment/assets/146362069/0c5cefc6-a48a-4e52-aa43-66f66596d9ad)
+
