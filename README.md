@@ -1,6 +1,6 @@
 ## Introduction
 This is an app based on Node js for wellness reminders.
-It is desgined to send to their phone messages every 5th minute by sending them and remind the well-being.
+It is desgined to send to people's phone messages every 5th minute by sending them and remind the well-being.
 First I generated different messages I wanted to send out to people and stored them in the messages.json file so it is easier to retrieve.
 
 ```javascript
@@ -59,7 +59,7 @@ function sendWellnessMessage() {
 }
 ```
 ## problems
-At first try, I couldn't detect if the message was being sent or not. The "Wellness notifier started. Waiting for scheduled messages.." console log let me to detect if the app runs the way you desire.  
+At first try, I couldn't detect if the message was being sent or not. The "Wellness notifier started. Waiting for scheduled messages.." console log let me to detect if the app runs the way i desire.  
 
 <img width="572" alt="first issue" src="https://github.com/JXINN1/06_assignment/assets/146362069/127b863a-cd0e-4239-920a-ae9e0f010dd2">
 
