@@ -64,10 +64,6 @@ At first try, I couldn't detect if the message was being sent or not. The "Welln
 Also I added the log message whenever a message is being pushed. 
 ``pm2 log`` showed all the messages that are pushed.
 
-
-
-
-
 ![pm2_start](https://github.com/JXINN1/06_assignment/assets/146362069/eb794840-5cea-4534-97c6-08d64838ebfe)
 
 Digital Ocean droplet and pm2 let me to run the project continuously, and I constantly checked with the monitor.
