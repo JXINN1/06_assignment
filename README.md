@@ -61,11 +61,8 @@ function sendWellnessMessage() {
 ## problems
 At first try, I couldn't detect if the message was being sent or not. The "Wellness notifier started. Waiting for scheduled messages.." console log let me to detect if the app runs the way i desire.  
 
-<img width="572" alt="first issue" src="https://github.com/JXINN1/06_assignment/assets/146362069/127b863a-cd0e-4239-920a-ae9e0f010dd2">
-
 Also I added the log message whenever a message is being pushed. 
-As you can see, ``pm2 log`` shows all the messages that are pushed.
-<img width="1009" alt="third issue" src="https://github.com/JXINN1/06_assignment/assets/146362069/0f812ddc-23a6-4607-b594-0fc660e024a5">
+``pm2 log`` showed all the messages that are pushed.
 
 ![pm2_start](https://github.com/JXINN1/06_assignment/assets/146362069/eb794840-5cea-4534-97c6-08d64838ebfe)
 
